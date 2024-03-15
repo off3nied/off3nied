@@ -32,10 +32,8 @@ jobs:
         run: |
           git remote set-url origin https://oauth2:$GITHUB_TOKEN@github.com/${{ github.repository }}
           git diff
-          git config --global user.email "youremail@example.com"
-          git config --global user.name "Your Name"
-          git config --global credential.helper store
-          echo "machine github.com login off3nied password $GITHUB_TOKEN" > ~/.netrc
+          git config --global user.email "off3nied@gmail.com"
+          git config --global user.name "off3nied"
           git add README.md
           git commit -m "GitHub Action Auto Updated"
           git push
