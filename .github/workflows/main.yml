@@ -6,6 +6,10 @@ on:
   push:
     branches:    
       - main
+      
+permissions:
+  contents: read
+  
 jobs:
   push:
       runs-on: ${{ matrix.operating-system }}
@@ -27,10 +31,8 @@ jobs:
       - name: Build
         run: pipenv run build
       - name: Commit and push if changed
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
-          git remote set-url origin https://oauth2:$GITHUB_TOKEN@github.com/${{ github.repository }}
+          git remote set-url origin https://oauth2:${{ secrets.TOKEN }}@github.com/${{ github.repository }}.git
           git diff
           git config --global user.email "off3nied@gmail.com"
           git config --global user.name "off3nied"
